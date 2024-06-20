@@ -21,3 +21,7 @@ nginx: ## Run nginx
 
 tailwind: ## Run tailwindcss
 	npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch -m
+
+
+publish: ## Publish files to bucket
+	aws s3 cp --recursive $(PWD)/src/ s3://demo-html-edgee/
