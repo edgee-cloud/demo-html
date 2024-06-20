@@ -25,3 +25,5 @@ tailwind: ## Run tailwindcss
 
 publish: ## Publish files to bucket
 	aws s3 cp --recursive $(PWD)/src/ s3://demo-html-edgee/
+  # add metadata for the html files, set cache-control to "private, no-store"
+	aws s3 cp --recursive $(PWD)/src/ s3://demo-html-edgee/ --exclude "*" --include "*.html" --metadata-directive REPLACE --cache-control "private, no-store"
