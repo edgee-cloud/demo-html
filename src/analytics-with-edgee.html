@@ -66,26 +66,42 @@
 <div class="bg-white py-8 sm:py-10">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-4xl sm:text-center">
-      <h2 class="text-base font-semibold leading-none text-indigo-600">The future</h2>
+      <h2 class="text-base font-semibold leading-none text-indigo-600" id="title">The future</h2>
       <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Doing analytics with Edgee components.</p>
       <p class="mt-6 text-lg leading-1 text-gray-600">
         What was originally performed by javascript in your browser is now performed by Edgee Proxy. This means that you no longer see a call to Google Analytics, Amplitude, Segment... in your browser.
       </p>
+      <div class="mt-6 text-lg leading-1 text-gray-600">
+        <button id="track" class="bg-gray-800 text-sm text-white py-2 px-4 rounded-md">Track</button>
+        <button id="identify" class="bg-gray-800 text-sm text-white py-2 px-4 rounded-md">Identify</button>
+      </div>
     </div>
   </div>
+
   <div class="relative overflow-hidden pt-8">
     <div class="mx-auto max-w-6xl px-6 lg:px-8">
       <img src="./img/edgee.png" alt="App screenshot" id="edgee-proxy" class="shadow-2xl" width="2432" height="1442">
-      <script>
-        document.getElementById('edgee-proxy').onclick = function () {
-          this.src = './img/edgee-2.png';
-          edgee.track("button click");
-        };
-      </script>
-      </script>
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById('track').onclick = function () {
+    document.getElementById('edgee-proxy').src = './img/edgee-2.png';
+    edgee.track("button click");
+  };
+  document.getElementById('identify').onclick = function () {
+    document.getElementById('edgee-proxy').src = './img/edgee-2.png';
+    edgee.identify({
+      "userId": "abcde",
+      "anonymousId": "12345",
+      "properties": {
+        "email": "me@example.com",
+        "name": "John Doe"
+      }
+    });
+  };
+</script>
 
 <script id="__EDGEE_SDK__" async src="https://demo.edgee.app/_edgee/sdk.js"></script>
 </body>
