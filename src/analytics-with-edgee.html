@@ -88,8 +88,16 @@
 <script>
   document.getElementById('track').onclick = function () {
     document.getElementById('edgee-proxy').src = './img/edgee-2.png';
-    edgee.track("button click");
+    edgee.track({
+      name: "button click",
+      properties: {
+        color: "blue",
+        category: "shoes",
+        label: "Blue Sneakers"
+      }
+    });
   };
+
   document.getElementById('identify').onclick = function () {
     document.getElementById('edgee-proxy').src = './img/edgee-2.png';
     edgee.identify({
