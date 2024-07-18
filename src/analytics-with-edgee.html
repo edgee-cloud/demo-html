@@ -86,26 +86,35 @@
 </div>
 
 <script>
+  function changeImg() {
+    var img = document.getElementById('edgee-proxy');
+    if (img.src !== './img/edgee-2.png') {
+      img.src = './img/edgee-2.png';
+    }
+  }
+
   document.getElementById('track').onclick = function () {
-    document.getElementById('edgee-proxy').src = './img/edgee-2.png';
+    changeImg();
     edgee.track({
       name: "button_click",
       properties: {
         color: "blue",
         category: "shoes",
-        label: "Blue Sneakers"
+        label: "Blue Sneakers",
+        size: 10,
+        registered: false
       }
     });
   };
 
   document.getElementById('identify').onclick = function () {
-    document.getElementById('edgee-proxy').src = './img/edgee-2.png';
+    changeImg();
     edgee.identify({
-      "userId": "abcde",
-      "anonymousId": "12345",
-      "properties": {
-        "email": "me@example.com",
-        "name": "John Doe"
+      properties: {
+        email: "me@example.com",
+        name: "John Doe",
+        age: 42,
+        verified: true
       }
     });
   };
