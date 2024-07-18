@@ -9,9 +9,9 @@ This is a simple HTML website that demonstrates how to use Edgee.
 
 ```bash
 ## Go wherever you want
-git clone git@github.com:edgee-cloud/edgee-demo-html.github.io.git
-cd edgee-demo-html.github.io
-nix develop ## After this command all the dependencies will be installed and you will be in a Nix shell
+git clone git@github.com:edgee-cloud/demo-html.git
+cd demo-html
+nix develop
 make up
 ```
 
@@ -38,8 +38,8 @@ OR
 
 ```bash
 ## Go wherever you want
-git clone git@github.com:edgee-cloud/edgee-demo-html.github.io.git
-cd edgee-demo-html.github.io
+git clone git@github.com:edgee-cloud/demo-html.git
+cd demo-html
 
 make install ## This command will install the npm dependencies
 make nginx ## This command will launch a nginx to serve your html file
