@@ -1,8 +1,13 @@
 {
+  "scripts": {
+    "dev": "concurrently --kill-others \"npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch -m\" \"http-server ./src -c-1 -p 8080\""
+  },
   "dependencies": {
     "@vercel/edge": "^0.1.2"
   },
   "devDependencies": {
+    "concurrently": "^9.0.1",
+    "http-server": "^14.1.1",
     "tailwindcss": "^3.4.4"
   }
 }
