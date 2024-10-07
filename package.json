@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "dev": "concurrently --kill-others \"npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch -m\" \"http-server ./src -c-1 -p 8080\""
+    "dev": "concurrently --kill-others \"npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch -m\" \"http-server ./src -c-1 -p 8080\"",
+    "build": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css -m",
+    "start": "http-server ./src -c-1 -p 8080"
   },
   "dependencies": {
     "@vercel/edge": "^0.1.2"
