@@ -85,6 +85,53 @@
   </div>
 </div>
 
+<script>
+  window.addEventListener('edgee:loaded', function () {
+    // first parameter is the event name, second is the properties, third is the destinations
+    edgee.track("button click", {
+      "color": "blue",
+      "category": "test",
+      "label": "button click"
+    }, {
+      "Google Analytics": true,
+      "Amplitude": true,
+      "Facebook Conversions API": true,
+    });
+
+    // first parameter is page information, third is the destinations
+    edgee.page({
+      "name": "With Edgee",
+      "category": "demo",
+      "title": "With Edgee",
+      "url": "https://demo.edgee.app/with-edgee.html",
+      "path": "/with-edgee.html",
+      "search": "",
+      "keywords": ["demo", "tag manager", "edgee"],
+      "properties": {
+        "section": "political",
+        "pv": 1
+      }
+    }, {
+      "Google Analytics": true,
+      "Amplitude": true,
+      "Facebook Conversions API": true,
+    });
+
+    edgee.user({
+      "userId": "12345",
+      "anonymousId": "12345",
+      "properties": {
+        "email": "me@example.com",
+        "name": "John Doe"
+      }
+    }, {
+      "Google Analytics": true,
+      "Amplitude": true,
+      "Facebook Conversions API": true,
+    });
+  });
+</script>
+
 <script id="__EDGEE_DATA_LAYER__" type="application/json">
   {
     "data_collection": {
@@ -180,52 +227,7 @@
     }
   }
 </script>
-<script id="__EDGEE_SDK__" data-inline="false" async src="https://demo.edgee.app/_edgee/sdk.js"></script>
-<script>
-  window.addEventListener('edgee:loaded', function () {
-    // first parameter is the event name, second is the properties, third is the destinations
-    edgee.track("button click", {
-      "color": "blue",
-      "category": "test",
-      "label": "button click"
-    }, {
-      "Google Analytics": true,
-      "Amplitude": true,
-      "Facebook Conversions API": true,
-    });
+<script id="__EDGEE_SDK__" async src="https://demo.edgee.app/_edgee/sdk.js"></script>
 
-    // first parameter is page information, third is the destinations
-    edgee.page({
-      "name": "With Edgee",
-      "category": "demo",
-      "title": "With Edgee",
-      "url": "https://demo.edgee.app/with-edgee.html",
-      "path": "/with-edgee.html",
-      "search": "",
-      "keywords": ["demo", "tag manager", "edgee"],
-      "properties": {
-        "section": "political",
-        "pv": 1
-      }
-    }, {
-      "Google Analytics": true,
-      "Amplitude": true,
-      "Facebook Conversions API": true,
-    });
-
-    edgee.user({
-      "userId": "12345",
-      "anonymousId": "12345",
-      "properties": {
-        "email": "me@example.com",
-        "name": "John Doe"
-      }
-    }, {
-      "Google Analytics": true,
-      "Amplitude": true,
-      "Facebook Conversions API": true,
-    });
-  });
-</script>
 </body>
 </html>
