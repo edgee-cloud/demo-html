@@ -88,10 +88,15 @@
 <script>
   window.addEventListener('edgee:loaded', function () {
     // first parameter is the event name, second is the properties, third is the destinations
-    edgee.track("button click", {
-      "color": "blue",
-      "category": "test",
-      "label": "button click"
+    edgee.track({
+      name: "button_click",
+      properties: {
+        color: "blue",
+        category: "shoes",
+        label: "Blue Sneakers",
+        size: 10,
+        registered: false
+      }
     }, {
       "Google Analytics": true,
       "Amplitude": true,
