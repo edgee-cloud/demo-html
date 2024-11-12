@@ -149,6 +149,20 @@
 
 
 <!-- Google Analytics -->
+<script>
+  // Define dataLayer and the gtag function.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Set default consent to 'denied' as a placeholder
+  // Determine actual values based on your own requirements
+  gtag('consent', 'default', {
+    'ad_storage': 'granted',
+    'ad_user_data': 'granted',
+    'ad_personalization': 'granted',
+    'analytics_storage': 'granted'
+  });
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVSJKCVFCY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
