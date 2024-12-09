@@ -9,6 +9,105 @@
   <link rel="canonical" href="https://demo.edgee.app/analytics-with-edgee.html">
   <meta name="keywords" content="demo, tag manager">
   <link href="./css/output.css" rel="stylesheet">
+
+  <script id="__EDGEE_DATA_LAYER__" type="application/json">
+    {
+      "data_collection": {
+        "events": [
+          {
+            "type": "page",
+            "data": {
+              "name": "With Edgee",
+              "category": "demo",
+              "title": "With Edgee",
+              "url": "https://demo.edgee.app/with-edgee.html",
+              "path": "/with-edgee.html",
+              "search": "?ok",
+              "keywords": [
+                "demo",
+                "tag manager",
+                "edgee"
+              ],
+              "properties": {
+                "section": "political",
+                "pv": 1
+              }
+            },
+            "components": {
+              "all": false,
+              "google_analytics": true,
+              "amplitude": true,
+              "facebook_capi": false
+            },
+            "context": {
+              "consent": "granted"
+            }
+          },
+          {
+            "type": "track",
+            "data": {
+              "name": "button click",
+              "properties": {
+                "color": "blue",
+                "category": "test",
+                "label": "button click"
+              }
+            },
+            "components": {
+              "all": true,
+              "google_analytics": true,
+              "amplitude": true,
+              "facebook_capi": true
+            }
+          },
+          {
+            "type": "user",
+            "data": {
+              "user_id": "12345",
+              "anonymous_id": "12345",
+              "properties": {
+                "email": "me@example.com",
+                "name": "John Doe"
+              }
+            }
+          }
+        ],
+        "components": {
+          "all": true
+        },
+        "context": {
+          "page": {
+            "name": "With Edgee",
+            "category": "demo",
+            "title": "With Edgee",
+            "url": "https://demo.edgee.app/with-edgee.html",
+            "path": "/with-edgee.html",
+            "search": "?ok",
+            "keywords": [
+              "demo",
+              "tag manager",
+              "edgee"
+            ],
+            "properties": {
+              "section": "political",
+              "pv": 1
+            }
+          },
+          "user": {
+            "user_id": "12345",
+            "anonymous_id": "12345",
+            "properties": {
+              "email": "me@example.com",
+              "name": "John Doe"
+            }
+          },
+          "consent": "pending"
+        }
+      }
+    }
+  </script>
+  <script id="__EDGEE_SDK__" async src="https://demo.edgee.app/_edgee/sdk.js"></script>
+
 </head>
 <body class="min-h-screen bg-background font-sans antialiased">
 
@@ -136,103 +235,5 @@
     });
   });
 </script>
-
-<script id="__EDGEE_DATA_LAYER__" type="application/json">
-  {
-    "data_collection": {
-      "events": [
-        {
-          "type": "page",
-          "data": {
-            "name": "With Edgee",
-            "category": "demo",
-            "title": "With Edgee",
-            "url": "https://demo.edgee.app/with-edgee.html",
-            "path": "/with-edgee.html",
-            "search": "?ok",
-            "keywords": [
-              "demo",
-              "tag manager",
-              "edgee"
-            ],
-            "properties": {
-              "section": "political",
-              "pv": 1
-            }
-          },
-          "components": {
-            "all": true,
-            "google_analytics": true,
-            "amplitude": true,
-            "facebook_capi": false
-          }
-        },
-        {
-          "type": "track",
-          "data": {
-            "name": "button click",
-            "properties": {
-              "color": "blue",
-              "category": "test",
-              "label": "button click"
-            }
-          },
-          "components": {
-            "all": true,
-            "google_analytics": true,
-            "amplitude": true,
-            "facebook_capi": true
-          }
-        },
-        {
-          "type": "user",
-          "data": {
-            "user_id": "12345",
-            "anonymous_id": "12345",
-            "properties": {
-              "email": "me@example.com",
-              "name": "John Doe"
-            }
-          }
-        }
-      ],
-      "components": {
-        "all": true,
-        "google_analytics": true,
-        "amplitude": true,
-        "facebook_capi": false
-      },
-      "context": {
-        "page": {
-          "name": "With Edgee",
-          "category": "demo",
-          "title": "With Edgee",
-          "url": "https://demo.edgee.app/with-edgee.html",
-          "path": "/with-edgee.html",
-          "search": "?ok",
-          "keywords": [
-            "demo",
-            "tag manager",
-            "edgee"
-          ],
-          "properties": {
-            "section": "political",
-            "pv": 1
-          }
-        },
-        "user": {
-          "user_id": "12345",
-          "anonymous_id": "12345",
-          "properties": {
-            "email": "me@example.com",
-            "name": "John Doe"
-          }
-        }
-      }
-    }
-  }
-</script>
-<script id="__EDGEE_SDK__" async src="https://demo.edgee.app/_edgee/sdk.js"></script>
-
 </body>
 </html>
