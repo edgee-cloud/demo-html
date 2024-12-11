@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,191 +10,278 @@
   <meta name="keywords" content="demo, tag manager">
   <link href="./css/output.css" rel="stylesheet">
 </head>
+
 <body class="min-h-screen bg-background font-sans antialiased">
 
-<nav class="bg-gray-800">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
-      <div class="flex items-center">
-        <div class="flex-shrink-0">
-          <a href="./">
-            <svg width="30" height="30" viewBox="0 0 512 512" fill="#FFFFFF">
-              <path
-                d="M250.89 62.0864C253.362 56.5582 258.844 53 264.891 53H418.643C429.762 53 437.187 64.4799 432.643 74.6453L413.509 117.45C411.038 122.978 405.555 126.537 399.509 126.537H245.757C234.638 126.537 227.212 115.057 231.756 104.891L250.89 62.0864Z"/>
-              <path
-                d="M97.4909 228.916C99.962 223.387 105.445 219.829 111.491 219.829H297.019C308.138 219.829 315.563 231.309 311.019 241.475L291.885 284.279C289.414 289.808 283.931 293.366 277.885 293.366H92.3574C81.2382 293.366 73.8128 281.886 78.3568 271.721L97.4909 228.916Z"/>
-              <path
-                d="M97.4909 393.55C99.962 388.022 105.445 384.463 111.491 384.463H367.144C378.263 384.463 385.689 395.943 381.145 406.109L362.011 448.914C359.54 454.442 354.057 458 348.01 458H92.3574C81.2382 458 73.8128 446.52 78.3568 436.355L97.4909 393.55Z"/>
-            </svg>
-          </a>
-        </div>
-        <div class="ml-6 block">
-          <div id="nav" class="flex space-x-4">
-            <a href="./" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
-            <a href="./analytics-with-js.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Analytics with JS</a>
-            <a href="./analytics-with-edgee.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Analytics with Edgee</a>
-          </div>
-          <script>
-            document.addEventListener('DOMContentLoaded', function () {
-              var currentUrl = window.location.pathname;
-              if (currentUrl === "/index.html") {
-                currentUrl = "/";
-              }
-              var links = document.querySelectorAll('#nav a');
-              links.forEach(function (link) {
-                if (link.getAttribute('href') === "." + currentUrl) {
-                  link.classList.add('bg-gray-900');
-                }
-              });
-            });
-          </script>
-        </div>
-      </div>
-      <div class="flex items-center">
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
-          <a href="https://github.com/edgee-cloud/demo-html" target="_blank" class="text-sm font-medium text-gray-300 hover:text-white">
-            <svg width="24" height="24" viewBox="0 0 1024 1024" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(64)" fill="#CCCCCC"/>
-            </svg>
-          </a>
+          <div class="flex-shrink-0">
+            <a href="./">
+              <svg width="30" height="30" viewBox="0 0 512 512" fill="#FFFFFF">
+                <path
+                  d="M250.89 62.0864C253.362 56.5582 258.844 53 264.891 53H418.643C429.762 53 437.187 64.4799 432.643 74.6453L413.509 117.45C411.038 122.978 405.555 126.537 399.509 126.537H245.757C234.638 126.537 227.212 115.057 231.756 104.891L250.89 62.0864Z" />
+                <path
+                  d="M97.4909 228.916C99.962 223.387 105.445 219.829 111.491 219.829H297.019C308.138 219.829 315.563 231.309 311.019 241.475L291.885 284.279C289.414 289.808 283.931 293.366 277.885 293.366H92.3574C81.2382 293.366 73.8128 281.886 78.3568 271.721L97.4909 228.916Z" />
+                <path
+                  d="M97.4909 393.55C99.962 388.022 105.445 384.463 111.491 384.463H367.144C378.263 384.463 385.689 395.943 381.145 406.109L362.011 448.914C359.54 454.442 354.057 458 348.01 458H92.3574C81.2382 458 73.8128 446.52 78.3568 436.355L97.4909 393.55Z" />
+              </svg>
+            </a>
+          </div>
+          <div class="ml-6 block">
+            <div id="nav" class="flex space-x-4">
+              <a href="./"
+                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+              <a href="./analytics-with-js.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Analytics
+                with JS</a>
+              <a href="./analytics-with-edgee.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Analytics
+                with Edgee</a>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                var currentUrl = window.location.pathname;
+                if (currentUrl === "/index.html") {
+                  currentUrl = "/";
+                }
+                var links = document.querySelectorAll('#nav a');
+                links.forEach(function (link) {
+                  if (link.getAttribute('href') === "." + currentUrl) {
+                    link.classList.add('bg-gray-900');
+                  }
+                });
+              });
+            </script>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="flex items-center">
+            <a href="https://github.com/edgee-cloud/demo-html" target="_blank"
+              class="text-sm font-medium text-gray-300 hover:text-white">
+              <svg width="24" height="24" viewBox="0 0 1024 1024" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
+                  transform="scale(64)" fill="#CCCCCC" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<div class="bg-white py-8 sm:py-10">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-4xl sm:text-center">
-      <h2 class="text-base font-semibold leading-none text-indigo-600">The past</h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Standard web page, with JS for analytics.</p>
-      <p class="mt-6 text-lg leading-1 text-gray-600">This is a very standard website. When you request this page, the browser sends a request to a server (origin). The origin processes the request and sends an html response to your browser. Once the html is loaded in your browser, several javascripts are executed, including the Google Analytics script.</p>
+  <div class="bg-white py-8 sm:py-10">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-4xl sm:text-center">
+        <h2 class="text-base font-semibold leading-none text-indigo-600">The past</h2>
+        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Standard web page, with JS for
+          analytics.</p>
+        <p class="mt-6 text-lg leading-1 text-gray-600">This is a very standard website. When you request this page, the
+          browser sends a request to a server (origin). The origin processes the request and sends an html response to
+          your browser. Once the html is loaded in your browser, several javascripts are executed, including the Google
+          Analytics script.</p>
+      </div>
     </div>
-  </div>
-  <div class="relative overflow-hidden pt-8">
-    <div class="mx-auto max-w-6xl px-6 lg:px-8">
-      <img src="./img/standard.png" alt="App screenshot" class="shadow-2xl" width="2432" height="1442">
-    </div>
-  </div>
-
-
-  <div class="mx-auto mt-16 max-w-6xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-    <div class="mb-10">
-      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Client side data collection is no longer effective</h2>
-      <p class="mt-6 text-lg leading-8 text-gray-600">
-        Using client-side analytics libraries for Google Analytics, Segment, or Amplitude... is no longer effective. Here are some reasons why:
-      </p>
+    <div class="relative overflow-hidden pt-8">
+      <div class="mx-auto max-w-6xl px-6 lg:px-8">
+        <img src="./img/standard.png" alt="App screenshot" class="shadow-2xl" width="2432" height="1442">
+      </div>
     </div>
 
-    <dl class="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-gray-900">
-          <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-snail"><path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0"/><circle cx="10" cy="13" r="8"/><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6"/><path d="M18 3 19.1 5.2"/><path d="M22 3 20.9 5.2"/></svg>
-          Webperf degradation.
-        </dt>
-        <dd class="inline">
-          Using a lot of third-party scripts can slow down your website, and impact your SEO.
-        </dd>
+
+    <div class="mx-auto mt-16 max-w-6xl px-6 sm:mt-20 md:mt-24 lg:px-8">
+      <div class="mb-10">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Client side data collection is no longer
+          effective</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Using client-side analytics libraries for Google Analytics, Segment, or Amplitude... is no longer effective.
+          Here are some reasons why:
+        </p>
       </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-gray-900">
-          <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
-          Third-party cookies apocalypse.
-        </dt>
-        <dd class="inline">
-          Third-party cookies are being blocked by browsers, and will soon be deprecated.
-        </dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-gray-900">
-          <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/></svg>
-          Browser tracking restrictions.
-        </dt>
-        <dd class="inline">
-          Browsers are implementing tracking restrictions, making it harder to collect data.
-        </dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-gray-900">
-          <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.26 9.26 3 11v3l14.14 3.14"/><path d="M21 15.34V6l-7.31 2.03"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
-          AD blockers.
-        </dt>
-        <dd class="inline">
-          Ad blockers are blocking more and more tracking scripts, impacting your data collection.
-        </dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-gray-900">
-          <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><path d="M7.5 8 10 9"/><path d="m14 9 2.5-1"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg>
-          Consent falls.
-        </dt>
-        <dd class="inline">
-          Users are more and more aware of their privacy, and are less likely to give their consent to be tracked.
-        </dd>
-      </div>
-      <div class="relative pl-9">
-        <dt class="inline font-semibold text-gray-900">
-          <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M10 2.5c-1.31 0-2.526.386-3.546 1.051a.75.75 0 01-.82-1.256A8 8 0 0118 9a22.47 22.47 0 01-1.228 7.351.75.75 0 11-1.417-.49A20.97 20.97 0 0016.5 9 6.5 6.5 0 0010 2.5zM4.333 4.416a.75.75 0 01.218 1.038A6.466 6.466 0 003.5 9a7.966 7.966 0 01-1.293 4.362.75.75 0 01-1.257-.819A6.466 6.466 0 002 9c0-1.61.476-3.11 1.295-4.365a.75.75 0 011.038-.219zM10 6.12a3 3 0 00-3.001 3.041 11.455 11.455 0 01-2.697 7.24.75.75 0 01-1.148-.965A9.957 9.957 0 005.5 9c0-.028.002-.055.004-.082a4.5 4.5 0 018.996.084V9.15l-.005.297a.75.75 0 11-1.5-.034c.003-.11.004-.219.005-.328a3 3 0 00-3-2.965zm0 2.13a.75.75 0 01.75.75c0 3.51-1.187 6.745-3.181 9.323a.75.75 0 11-1.186-.918A13.687 13.687 0 009.25 9a.75.75 0 01.75-.75zm3.529 3.698a.75.75 0 01.584.885 18.883 18.883 0 01-2.257 5.84.75.75 0 11-1.29-.764 17.386 17.386 0 002.078-5.377.75.75 0 01.885-.584z" clip-rule="evenodd" />
-          </svg>
-          Privacy regulations.
-        </dt>
-        <dd class="inline">
-          Privacy regulations like GDPR, CCPA... are making it harder to collect data.
-        </dd>
-      </div>
-    </dl>
+
+      <dl
+        class="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base leading-7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+        <div class="relative pl-9">
+          <dt class="inline font-semibold text-gray-900">
+            <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-snail">
+              <path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0" />
+              <circle cx="10" cy="13" r="8" />
+              <path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6" />
+              <path d="M18 3 19.1 5.2" />
+              <path d="M22 3 20.9 5.2" />
+            </svg>
+            Webperf degradation.
+          </dt>
+          <dd class="inline">
+            Using a lot of third-party scripts can slow down your website, and impact your SEO.
+          </dd>
+        </div>
+        <div class="relative pl-9">
+          <dt class="inline font-semibold text-gray-900">
+            <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+              <path d="M8.5 8.5v.01" />
+              <path d="M16 15.5v.01" />
+              <path d="M12 12v.01" />
+              <path d="M11 17v.01" />
+              <path d="M7 14v.01" />
+            </svg>
+            Third-party cookies apocalypse.
+          </dt>
+          <dd class="inline">
+            Third-party cookies are being blocked by browsers, and will soon be deprecated.
+          </dd>
+        </div>
+        <div class="relative pl-9">
+          <dt class="inline font-semibold text-gray-900">
+            <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            Browser tracking restrictions.
+          </dt>
+          <dd class="inline">
+            Browsers are implementing tracking restrictions, making it harder to collect data.
+          </dd>
+        </div>
+        <div class="relative pl-9">
+          <dt class="inline font-semibold text-gray-900">
+            <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.26 9.26 3 11v3l14.14 3.14" />
+              <path d="M21 15.34V6l-7.31 2.03" />
+              <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+              <line x1="2" x2="22" y1="2" y2="22" />
+            </svg>
+            AD blockers.
+          </dt>
+          <dd class="inline">
+            Ad blockers are blocking more and more tracking scripts, impacting your data collection.
+          </dd>
+        </div>
+        <div class="relative pl-9">
+          <dt class="inline font-semibold text-gray-900">
+            <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" width="24" height="24" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M16 16s-1.5-2-4-2-4 2-4 2" />
+              <path d="M7.5 8 10 9" />
+              <path d="m14 9 2.5-1" />
+              <path d="M9 10h.01" />
+              <path d="M15 10h.01" />
+            </svg>
+            Consent falls.
+          </dt>
+          <dd class="inline">
+            Users are more and more aware of their privacy, and are less likely to give their consent to be tracked.
+          </dd>
+        </div>
+        <div class="relative pl-9">
+          <dt class="inline font-semibold text-gray-900">
+            <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"
+              aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M10 2.5c-1.31 0-2.526.386-3.546 1.051a.75.75 0 01-.82-1.256A8 8 0 0118 9a22.47 22.47 0 01-1.228 7.351.75.75 0 11-1.417-.49A20.97 20.97 0 0016.5 9 6.5 6.5 0 0010 2.5zM4.333 4.416a.75.75 0 01.218 1.038A6.466 6.466 0 003.5 9a7.966 7.966 0 01-1.293 4.362.75.75 0 01-1.257-.819A6.466 6.466 0 002 9c0-1.61.476-3.11 1.295-4.365a.75.75 0 011.038-.219zM10 6.12a3 3 0 00-3.001 3.041 11.455 11.455 0 01-2.697 7.24.75.75 0 01-1.148-.965A9.957 9.957 0 005.5 9c0-.028.002-.055.004-.082a4.5 4.5 0 018.996.084V9.15l-.005.297a.75.75 0 11-1.5-.034c.003-.11.004-.219.005-.328a3 3 0 00-3-2.965zm0 2.13a.75.75 0 01.75.75c0 3.51-1.187 6.745-3.181 9.323a.75.75 0 11-1.186-.918A13.687 13.687 0 009.25 9a.75.75 0 01.75-.75zm3.529 3.698a.75.75 0 01.584.885 18.883 18.883 0 01-2.257 5.84.75.75 0 11-1.29-.764 17.386 17.386 0 002.078-5.377.75.75 0 01.885-.584z"
+                clip-rule="evenodd" />
+            </svg>
+            Privacy regulations.
+          </dt>
+          <dd class="inline">
+            Privacy regulations like GDPR, CCPA... are making it harder to collect data.
+          </dd>
+        </div>
+      </dl>
+    </div>
   </div>
-</div>
 
 
 
-<!-- Google Analytics -->
-<script>
-  // Define dataLayer and the gtag function.
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  <!-- Google Analytics -->
+  <script>
+    // Define dataLayer and the gtag function.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
 
-  // Set default consent to 'denied' as a placeholder
-  // Determine actual values based on your own requirements
-  gtag('consent', 'default', {
-    'ad_storage': 'granted',
-    'ad_user_data': 'granted',
-    'ad_personalization': 'granted',
-    'analytics_storage': 'granted'
-  });
-</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RVSJKCVFCY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    // Set default consent to 'denied' as a placeholder
+    // Determine actual values based on your own requirements
+    gtag('consent', 'default', {
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted',
+      'analytics_storage': 'granted'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RVSJKCVFCY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-RVSJKCVFCY');
-</script>
+    gtag('config', 'G-RVSJKCVFCY');
 
-<!-- Amplitude -->
-<script type="text/javascript">
-  !function(){"use strict";!function(e,t){var r=e.amplitude||{_q:[],_iq:{}};if(r.invoked)e.console&&console.error&&console.error("Amplitude snippet has been loaded.");else{var n=function(e,t){e.prototype[t]=function(){return this._q.push({name:t,args:Array.prototype.slice.call(arguments,0)}),this}},s=function(e,t,r){return function(n){e._q.push({name:t,args:Array.prototype.slice.call(r,0),resolve:n})}},o=function(e,t,r){e._q.push({name:t,args:Array.prototype.slice.call(r,0)})},i=function(e,t,r){e[t]=function(){if(r)return{promise:new Promise(s(e,t,Array.prototype.slice.call(arguments)))};o(e,t,Array.prototype.slice.call(arguments))}},a=function(e){for(var t=0;t<g.length;t++)i(e,g[t],!1);for(var r=0;r<m.length;r++)i(e,m[r],!0)};r.invoked=!0;var c=t.createElement("script");c.type="text/javascript",c.integrity="sha384-BHj/6N+ZSiRDYRUHPEqr/nwkUsSk3s9r1ryQeFBc4x2OiVz4peW3jSccKZsoU8Ry",c.crossOrigin="anonymous",c.async=!0,c.src="https://cdn.amplitude.com/libs/analytics-browser-2.6.2-beta.0-min.js.gz",c.onload=function(){e.amplitude.runQueuedFunctions||console.log("[Amplitude] Error: could not load SDK")};var u=t.getElementsByTagName("script")[0];u.parentNode.insertBefore(c,u);for(var l=function(){return this._q=[],this},p=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove","getUserProperties"],d=0;d<p.length;d++)n(l,p[d]);r.Identify=l;for(var f=function(){return this._q=[],this},v=["getEventProperties","setProductId","setQuantity","setPrice","setRevenue","setRevenueType","setEventProperties"],y=0;y<v.length;y++)n(f,v[y]);r.Revenue=f;var g=["getDeviceId","setDeviceId","getSessionId","setSessionId","getUserId","setUserId","setOptOut","setTransport","reset","extendSession"],m=["init","add","remove","track","logEvent","identify","groupIdentify","setGroup","revenue","flush"];a(r),r.createInstance=function(e){return r._iq[e]={_q:[]},a(r._iq[e]),r._iq[e]},e.amplitude=r}}(window,document)}();
-  amplitude.init('d213dd88c706c35abdee8e58350557df');
-</script>
+    gtag("event", "purchase", {
+      currency: "USD",
+      transaction_id: "T_12345", // Transaction ID. Required for purchases and refunds.
+      value: 30.03,
+      coupon: "SUMMER_FUN",
+      shipping: 3.33,
+      tax: 1.11,
+      items: [
+        {
+          item_id: "SKU_12345",
+          item_name: "Stan and Friends Tee",
+          affiliation: "Google Merchandise Store",
+          coupon: "SUMMER_FUN",
+          discount: 2.22,
+          index: 0,
+          item_brand: "Google",
+          item_category: "Apparel",
+          item_category2: "Adult",
+          item_category3: "Shirts",
+          item_category4: "Crew",
+          item_category5: "Short sleeve",
+          item_list_id: "related_products",
+          item_list_name: "Related Products",
+          item_variant: "green",
+          location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+          price: 10.01,
+          quantity: 3,
+          in_stock: true,
+          color: "green"
+        }
+      ]
+    });
+  </script>
 
-<!-- Piano Analytics -->
-<script type="text/javascript" crossorigin="anonymous" src="https://tag.aticdn.net/piano-analytics.js"></script>
-<script type="text/javascript">
-  pa.setConfigurations({
-    site: 643890,
-    collectDomain: "https://svkfrdt.pa-cd.com",
-  });
-  pa.sendEvent("page.display", {
-    page: "Analytics with JS",
-    page_authors: ["Sacha", "Alex"],
-  });
-</script>
+  <!-- Amplitude -->
+  <script type="text/javascript">
+    !function () { "use strict"; !function (e, t) { var r = e.amplitude || { _q: [], _iq: {} }; if (r.invoked) e.console && console.error && console.error("Amplitude snippet has been loaded."); else { var n = function (e, t) { e.prototype[t] = function () { return this._q.push({ name: t, args: Array.prototype.slice.call(arguments, 0) }), this } }, s = function (e, t, r) { return function (n) { e._q.push({ name: t, args: Array.prototype.slice.call(r, 0), resolve: n }) } }, o = function (e, t, r) { e._q.push({ name: t, args: Array.prototype.slice.call(r, 0) }) }, i = function (e, t, r) { e[t] = function () { if (r) return { promise: new Promise(s(e, t, Array.prototype.slice.call(arguments))) }; o(e, t, Array.prototype.slice.call(arguments)) } }, a = function (e) { for (var t = 0; t < g.length; t++)i(e, g[t], !1); for (var r = 0; r < m.length; r++)i(e, m[r], !0) }; r.invoked = !0; var c = t.createElement("script"); c.type = "text/javascript", c.integrity = "sha384-BHj/6N+ZSiRDYRUHPEqr/nwkUsSk3s9r1ryQeFBc4x2OiVz4peW3jSccKZsoU8Ry", c.crossOrigin = "anonymous", c.async = !0, c.src = "https://cdn.amplitude.com/libs/analytics-browser-2.6.2-beta.0-min.js.gz", c.onload = function () { e.amplitude.runQueuedFunctions || console.log("[Amplitude] Error: could not load SDK") }; var u = t.getElementsByTagName("script")[0]; u.parentNode.insertBefore(c, u); for (var l = function () { return this._q = [], this }, p = ["add", "append", "clearAll", "prepend", "set", "setOnce", "unset", "preInsert", "postInsert", "remove", "getUserProperties"], d = 0; d < p.length; d++)n(l, p[d]); r.Identify = l; for (var f = function () { return this._q = [], this }, v = ["getEventProperties", "setProductId", "setQuantity", "setPrice", "setRevenue", "setRevenueType", "setEventProperties"], y = 0; y < v.length; y++)n(f, v[y]); r.Revenue = f; var g = ["getDeviceId", "setDeviceId", "getSessionId", "setSessionId", "getUserId", "setUserId", "setOptOut", "setTransport", "reset", "extendSession"], m = ["init", "add", "remove", "track", "logEvent", "identify", "groupIdentify", "setGroup", "revenue", "flush"]; a(r), r.createInstance = function (e) { return r._iq[e] = { _q: [] }, a(r._iq[e]), r._iq[e] }, e.amplitude = r } }(window, document) }();
+    amplitude.init('d213dd88c706c35abdee8e58350557df');
+  </script>
 
-<!--<script>-->
-<!--    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);-->
-<!--    posthog.init('phc_C4wzdRurdQGPZnpdqmtsYLuzv5yXxWCl2FyMWz1VgRd',{api_host:'https://eu.posthog.com'})-->
-<!--</script>-->
+  <!-- Piano Analytics -->
+  <script type="text/javascript" crossorigin="anonymous" src="https://tag.aticdn.net/piano-analytics.js"></script>
+  <script type="text/javascript">
+    pa.setConfigurations({
+      site: 643890,
+      collectDomain: "https://svkfrdt.pa-cd.com",
+    });
+    pa.sendEvent("page.display", {
+      page: "Analytics with JS",
+      page_authors: ["Sacha", "Alex"],
+    });
+  </script>
+
+  <!--<script>-->
+  <!--    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);-->
+  <!--    posthog.init('phc_C4wzdRurdQGPZnpdqmtsYLuzv5yXxWCl2FyMWz1VgRd',{api_host:'https://eu.posthog.com'})-->
+  <!--</script>-->
 </body>
+
 </html>
