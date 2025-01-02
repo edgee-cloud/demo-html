@@ -86,6 +86,13 @@
       <img src="./img/edgee.png" alt="App screenshot" id="edgee-proxy" class="shadow-2xl" width="2432" height="1442">
     </div>
   </div>
+
+  <div id="consent-bar" class="mt-6 text-lg leading-1 text-gray-600 sticky bottom-0 bg-gray-800 p-4 space-x-2 flex justify-end align-middle">
+    <p class="text-white text-sm self-center">Consent</p>
+    <button id="denied" class="bg-gray-600 text-xs text-white py-2 px-2 rounded-md">Denied</button>
+    <button id="pending" class="bg-gray-600 text-xs text-white py-2 px-2 rounded-md">Pending</button>
+    <button id="granted" class="bg-gray-600 text-xs text-white py-2 px-2 rounded-md">Granted</button>
+  </div>
 </div>
 
 <script>
@@ -122,6 +129,21 @@
         verified: true
       }
     });
+  };
+
+  document.getElementById('denied').onclick = function () {
+    edgee.consent("denied");
+    document.getElementById('consent-bar').style.display = 'none';
+  };
+
+  document.getElementById('pending').onclick = function () {
+    edgee.consent("pending");
+    document.getElementById('consent-bar').style.display = 'none';
+  };
+
+  document.getElementById('granted').onclick = function () {
+    edgee.consent("granted");
+    document.getElementById('consent-bar').style.display = 'none';
   };
 </script>
 </body>
