@@ -17,7 +17,7 @@ export const AnalyticsWithJS = () => {
       : 'G-RVSJKCVFCY';
 
     window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) { window.dataLayer.push(arguments); }
+    function gtag(...args: any[]) { window.dataLayer.push(args); }
 
     gtag('consent', 'default', {
       'ad_storage': 'granted',
