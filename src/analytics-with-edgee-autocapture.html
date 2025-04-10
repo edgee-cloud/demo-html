@@ -45,7 +45,7 @@
               }
               var links = document.querySelectorAll('#nav a');
               links.forEach(function (link) {
-                if (link.getAttribute('href') === "." + currentUrl) {
+                if (link.getAttribute('href') === currentUrl) {
                   link.classList.add('bg-gray-900');
                 }
               });
