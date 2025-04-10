@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Welcome to Edgee HTML demo</title>
+  <meta property="og:title" content="Welcome to Edgee HTML demo">
+  <meta name="keywords" content="demo, tag manager">
+  <link rel="prefetch" href="/analytics-with-edgee.html" />
+  <link href="./css/output.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-background font-sans antialiased">
+
+<nav class="bg-gray-800">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <a href="./">
+            <svg width="30" height="30" viewBox="0 0 512 512" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M250.89 62.0864C253.362 56.5582 258.844 53 264.891 53H418.643C429.762 53 437.187 64.4799 432.643 74.6453L413.509 117.45C411.038 122.978 405.555 126.537 399.509 126.537H245.757C234.638 126.537 227.212 115.057 231.756 104.891L250.89 62.0864Z"/>
+              <path
+                d="M97.4909 228.916C99.962 223.387 105.445 219.829 111.491 219.829H297.019C308.138 219.829 315.563 231.309 311.019 241.475L291.885 284.279C289.414 289.808 283.931 293.366 277.885 293.366H92.3574C81.2382 293.366 73.8128 281.886 78.3568 271.721L97.4909 228.916Z"/>
+              <path
+                d="M97.4909 393.55C99.962 388.022 105.445 384.463 111.491 384.463H367.144C378.263 384.463 385.689 395.943 381.145 406.109L362.011 448.914C359.54 454.442 354.057 458 348.01 458H92.3574C81.2382 458 73.8128 446.52 78.3568 436.355L97.4909 393.55Z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="ml-6 block">
+          <div id="nav" class="flex space-x-4">
+            <a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Analytics with JS</a>
+            <a href="/analytics-with-edgee.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Analytics with Edgee</a>
+          </div>
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              var currentUrl = window.location.pathname;
+              if (currentUrl === "/index.html") {
+                currentUrl = "/";
+              }
+              var links = document.querySelectorAll('#nav a');
+              links.forEach(function (link) {
+                if (link.getAttribute('href') === "." + currentUrl) {
+                  link.classList.add('bg-gray-900');
+                }
+              });
+            });
+          </script>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <div class="flex items-center">
+          <a href="https://github.com/edgee-cloud/demo-html" target="_blank" class="text-sm font-medium text-gray-300 hover:text-white">
+            <svg width="24" height="24" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(64)" fill="#CCCCCC"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="flex flex-col">
+  <div class="relative isolate overflow-hidden bg-gray-900">
+    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8 h-lvh">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Welcome to Edgee HTML demo</h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
+          This site is a simple html demo app to show how Edgee can be used with any website.
+          Don't hesitate to check the source code ot visit our GitHub page to learn more.
+        </p>
+
+        <div class="mx-auto mt-16 max-w-2xl sm:mt-10 lg:mt-20 lg:max-w-none">
+          <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+            <div class="flex flex-col">
+              <dt class="flex items-center gap-x-3 text-left font-semibold leading-none text-white">
+                <svg class="h-8 w-8 flex-none" viewBox="0 0 630 630">
+                  <rect width="630" height="630" fill="#f7df1e"/>
+                  <path d="m423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z"/>
+                </svg>
+                <p class="flex flex-col">
+                  <span>Analytics with JavaScript</span>
+                  <span class="font-normal text-gray-400">The past</span>
+                </p>
+              </dt>
+              <dd class="mt-4 flex flex-auto flex-col text-left leading-7 text-gray-300">
+                <p class="flex-auto">
+                  Look at a page where analytic libraries like Google Analytics are added to the page in the traditional way, with javascript.
+                </p>
+                <p class="mt-6">
+                  <a href="./analytics-with-js.html" class="text-sm font-semibold leading-6 text-indigo-500">See how it works <span aria-hidden="true">→</span></a>
+                </p>
+              </dd>
+            </div>
+            <div class="flex flex-col">
+              <dt class="flex items-center gap-x-3 text-left font-semibold leading-none text-white">
+                <svg class="h-8 w-8 flex-none text-indigo-600" viewBox="0 0 512 512" fill="none">
+                  <rect width="512" height="512" fill="white"/>
+                  <path d="M253.721 125.027C255.404 121.273 259.137 118.857 263.254 118.857H367.947C375.519 118.857 380.575 126.653 377.481 133.556L364.452 162.625C362.769 166.379 359.036 168.795 354.919 168.795H250.225C242.654 168.795 237.598 160.999 240.692 154.096L253.721 125.027Z" fill="#231A26"/>
+                  <path d="M149.267 238.32C150.95 234.566 154.683 232.15 158.801 232.15H285.131C292.702 232.15 297.758 239.946 294.664 246.849L281.635 275.917C279.953 279.672 276.219 282.088 272.102 282.088H145.772C138.2 282.088 133.144 274.292 136.238 267.389L149.267 238.32Z" fill="#231A26"/>
+                  <path d="M149.267 350.122C150.95 346.368 154.683 343.952 158.801 343.952H332.881C340.452 343.952 345.508 351.748 342.414 358.651L329.385 387.72C327.703 391.474 323.969 393.89 319.852 393.89H145.772C138.2 393.89 133.144 386.094 136.238 379.191L149.267 350.122Z" fill="#231A26"/>
+                </svg>
+                <p class="flex flex-col">
+                  <span>Analytics with Edgee components</span>
+                  <span class="font-normal text-gray-400">The future</span>
+                </p>
+
+              </dt>
+              <dd class="mt-4 flex flex-auto flex-col text-left leading-7 text-gray-300">
+                <p class="flex-auto">
+                  Inspect how Edgee can be used to add analytics to your website without any javascript.
+                </p>
+                <p class="mt-6">
+                  <a href="./analytics-with-edgee.html" class="text-sm font-semibold leading-6 text-indigo-500">See how it works <span aria-hidden="true">→</span></a>
+                </p>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <svg viewBox="0 0 1024 1024"
+         class="absolute left-1/2 top-1/2 -z-10 h-[150rem] w-[150rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
+         aria-hidden="true">
+      <circle cx="512" cy="512" r="512" fill="url(#8d958450-c69f-4251-94bc-4e091a323369)" fill-opacity="0.7"/>
+      <defs>
+        <radialGradient id="8d958450-c69f-4251-94bc-4e091a323369">
+          <stop stop-color="#7775D6"/>
+          <stop offset="1" stop-color="#E935C1"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+</div>
+
+
+</body>
+</html>
