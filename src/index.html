@@ -94,14 +94,16 @@
   <!-- Piano Analytics -->
   <script type="text/javascript" crossorigin="anonymous" src="https://tag.aticdn.net/piano-analytics.js"></script>
   <script type="text/javascript">
-    pa.setConfigurations({
-      site: piano_site_id,
-      collectDomain: "https://svkfrdt.pa-cd.com",
-    });
-    pa.sendEvent("page.display", {
-      page: "Analytics with JS",
-      page_authors: ["Sacha", "Alex"],
-    });
+    if (typeof pa !== 'undefined') {
+      pa.setConfigurations({
+        site: piano_site_id,
+        collectDomain: "https://svkfrdt.pa-cd.com",
+      });
+      pa.sendEvent("page.display", {
+        page: "Analytics with JS",
+        page_authors: ["Sacha", "Alex"],
+      });
+    }
   </script>
 
   <!-- PostHog -->
