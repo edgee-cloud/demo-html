@@ -9,7 +9,8 @@
   <meta name="keywords" content="demo, tag manager">
   <link href="/css/output.css" rel="stylesheet">
 
-  <script src="https://static.kameleoon.com/kameleoonSDK-4-latest.js"></script>
+  <script id="__EDGEE_SDK__" async src="https://demo.edgee.app/_edgee/sdk.js"></script>
+  <script src="/p6cdkf9c3m/sdk.js"></script>
 
   <script type="text/javascript">
     window.addEventListener('load', () => {
@@ -17,6 +18,9 @@
 
       const client = new KameleoonClient({
         siteCode: 'p6cdkf9c3m',
+        externals: {
+          requester: edgee.getKameleoonRequester(),
+        },
       });
 
       const buyButtonColorClassNames = {
@@ -156,5 +160,6 @@
       </div>
     </div>
   </div>
+
 </body>
 </html>
