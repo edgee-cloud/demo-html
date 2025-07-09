@@ -10,83 +10,6 @@
     <link href="/css/output.css" rel="stylesheet" />
 
     <script src="https://static.kameleoon.com/kameleoonSDK-4-latest.js"></script>
-
-    <script type="text/javascript">
-      // Start timer when page loads
-      const startTime = performance.now();
-
-      window.addEventListener("load", () => {
-        const { KameleoonClient } = KameleoonSDK;
-
-        const client = new KameleoonClient({
-          siteCode: "p6cdkf9c3m",
-        });
-
-        const buyButtonColorClassNames = {
-          blue: ["bg-blue-400", "hover:bg-blue-500"],
-          green: ["bg-green-400", "hover:bg-green-500"],
-          red: ["bg-red-400", "hover:bg-red-500"],
-        };
-        const panelColorClassNames = {
-          blue: ["bg-blue-100"],
-          green: ["bg-green-100"],
-          red: ["bg-red-100"],
-        };
-
-        async function init() {
-          await client.initialize();
-
-          const visitorCode = client.getVisitorCode();
-
-          const variation = client.getVariation({
-            visitorCode,
-            featureKey: "test",
-          });
-
-          const siteName = variation.variables.get("site_name").value;
-          const siteColor = variation.variables.get("site_color").value;
-          const buttonColor = variation.variables.get("button_color").value;
-
-          document.title = siteName;
-
-          const panel = document.getElementById("panel");
-          panel.classList.remove("bg-white");
-          panel.classList.add(...panelColorClassNames[siteColor]);
-
-          const buyButton = document.getElementById("buy");
-          buyButton.classList.remove("bg-gray-600", "hover:bg-gray-700");
-          buyButton.classList.add(...buyButtonColorClassNames[buttonColor]);
-          buyButton.addEventListener("click", () => {
-            client.trackConversion({
-              visitorCode,
-              goalId: 381988,
-            });
-          });
-
-          // Calculate and display timer
-          const endTime = performance.now();
-          const loadTime = Math.round(endTime - startTime);
-          const timerElement = document.getElementById("timer");
-          timerElement.textContent = `Variation loaded in ${loadTime}ms`;
-          timerElement.classList.remove("hidden");
-        }
-        init();
-      });
-
-      // Clear site data function
-      function clearSiteData() {
-        // Clear localStorage
-        localStorage.clear();
-        // Clear sessionStorage
-        sessionStorage.clear();
-        // Clear cookies
-        document.cookie.split(";").forEach(function (c) {
-          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-        });
-        // Refresh page
-        window.location.reload();
-      }
-    </script>
   </head>
   <body class="min-h-screen bg-background font-sans antialiased">
     <nav class="bg-gray-800">
@@ -201,5 +124,79 @@
         </button>
       </div>
     </div>
+    <script type="text/javascript">
+      // Start timer when page loads
+      const startTime = performance.now();
+
+      const { KameleoonClient } = KameleoonSDK;
+
+      const client = new KameleoonClient({
+        siteCode: "p6cdkf9c3m",
+      });
+
+      const buyButtonColorClassNames = {
+        blue: ["bg-blue-400", "hover:bg-blue-500"],
+        green: ["bg-green-400", "hover:bg-green-500"],
+        red: ["bg-red-400", "hover:bg-red-500"],
+      };
+      const panelColorClassNames = {
+        blue: ["bg-blue-100"],
+        green: ["bg-green-100"],
+        red: ["bg-red-100"],
+      };
+
+      async function init() {
+        await client.initialize();
+
+        const visitorCode = client.getVisitorCode();
+
+        const variation = client.getVariation({
+          visitorCode,
+          featureKey: "test",
+        });
+
+        const siteName = variation.variables.get("site_name").value;
+        const siteColor = variation.variables.get("site_color").value;
+        const buttonColor = variation.variables.get("button_color").value;
+
+        document.title = siteName;
+
+        const panel = document.getElementById("panel");
+        panel.classList.remove("bg-white");
+        panel.classList.add(...panelColorClassNames[siteColor]);
+
+        const buyButton = document.getElementById("buy");
+        buyButton.classList.remove("bg-gray-600", "hover:bg-gray-700");
+        buyButton.classList.add(...buyButtonColorClassNames[buttonColor]);
+        buyButton.addEventListener("click", () => {
+          client.trackConversion({
+            visitorCode,
+            goalId: 381988,
+          });
+        });
+
+        // Calculate and display timer
+        const endTime = performance.now();
+        const loadTime = Math.round(endTime - startTime);
+        const timerElement = document.getElementById("timer");
+        timerElement.textContent = `Variation loaded in ${loadTime}ms`;
+        timerElement.classList.remove("hidden");
+      }
+      init();
+
+      // Clear site data function
+      function clearSiteData() {
+        // Clear localStorage
+        localStorage.clear();
+        // Clear sessionStorage
+        sessionStorage.clear();
+        // Clear cookies
+        document.cookie.split(";").forEach(function (c) {
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+        // Refresh page
+        window.location.reload();
+      }
+    </script>
   </body>
 </html>
