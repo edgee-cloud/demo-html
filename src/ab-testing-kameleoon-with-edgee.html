@@ -16,7 +16,7 @@
       // Start timer when page loads
       const startTime = performance.now();
 
-      window.addEventListener("load", () => {
+      window.addEventListener("edgee:loaded", () => {
         const { KameleoonClient } = KameleoonSDK;
 
         const client = new KameleoonClient({
