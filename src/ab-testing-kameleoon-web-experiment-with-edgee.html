@@ -9,7 +9,7 @@
     <meta name="keywords" content="demo, tag manager" />
     <link href="/css/output.css" rel="stylesheet" />
 
-    <script src="https://static.kameleoon.com/kameleoonSDK-4-latest.js"></script>
+    <script id="__EDGEE_SDK__" async src="https://demo.edgee.app/_edgee/sdk.js"></script>
   </head>
   <body class="min-h-screen bg-background font-sans antialiased">
     <nav class="bg-gray-800">
@@ -34,16 +34,28 @@
             <div class="ml-6 block">
               <div id="nav" class="flex space-x-4">
                 <a
-                  href="/ab-testing-kameleoon.html"
+                  href="/ab-testing-kameleoon-feature-flags.html"
                   class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
-                  Kameleoon
+                  Kameleoon Feature Flags
                 </a>
                 <a
-                  href="/ab-testing-kameleoon-with-edgee.html"
+                  href="/ab-testing-kameleoon-feature-flags-with-edgee.html"
                   class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                 >
-                  Kameleoon with Edgee
+                  Kameleoon Feature Flags with Edgee
+                </a>
+                <a
+                  href="/ab-testing-kameleoon-web-experiment.html"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
+                  Kameleoon Web Experiment
+                </a>
+                <a
+                  href="/ab-testing-kameleoon-web-experiment-with-edgee.html"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                >
+                  Kameleoon Web Experiment with Edgee
                 </a>
               </div>
               <script>
@@ -118,71 +130,38 @@
     <!-- Timer and Clear Button -->
     <div class="align-center flex justify-center">
       <div class="flex flex-col items-center space-y-3">
-        <div id="timer" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded text-sm font-medium">Loading...</div>
         <button onclick="clearSiteData()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded text-sm font-medium transition-colors">
           Clear Data & Refresh
         </button>
       </div>
     </div>
+
     <script type="text/javascript">
-      // Start timer when page loads
-      const startTime = performance.now();
+      window.kameleoonQueue = window.kameleoonQueue || [];
+      window.kameleoonStartLoadTime = new Date().getTime();
 
-      const { KameleoonClient } = KameleoonSDK;
+      function deleteAllCookies() {
+        const cookies = document.cookie.split(";");
 
-      const client = new KameleoonClient({
-        siteCode: "p6cdkf9c3m",
-      });
+        for (let i = 0; i < cookies.length; i++) {
+          let cookie = cookies[i];
+          let eqPos = cookie.indexOf("=");
+          let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          name = name.trim();
+          let domain = window.location.hostname;
+          let path = "/";
 
-      const buyButtonColorClassNames = {
-        blue: ["bg-blue-400", "hover:bg-blue-500"],
-        green: ["bg-green-400", "hover:bg-green-500"],
-        red: ["bg-red-400", "hover:bg-red-500"],
-      };
-      const panelColorClassNames = {
-        blue: ["bg-blue-100"],
-        green: ["bg-green-100"],
-        red: ["bg-red-100"],
-      };
+          // Attempt to delete with default path
+          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=" + path;
 
-      async function init() {
-        await client.initialize();
-
-        const visitorCode = client.getVisitorCode();
-
-        const variation = client.getVariation({
-          visitorCode,
-          featureKey: "test",
-        });
-
-        const siteName = variation.variables.get("site_name").value;
-        const siteColor = variation.variables.get("site_color").value;
-        const buttonColor = variation.variables.get("button_color").value;
-
-        document.title = siteName;
-
-        const panel = document.getElementById("panel");
-        panel.classList.remove("bg-white");
-        panel.classList.add(...panelColorClassNames[siteColor]);
-
-        const buyButton = document.getElementById("buy");
-        buyButton.classList.remove("bg-gray-600", "hover:bg-gray-700");
-        buyButton.classList.add(...buyButtonColorClassNames[buttonColor]);
-        buyButton.addEventListener("click", () => {
-          client.trackConversion({
-            visitorCode,
-            goalId: 381988,
-          });
-        });
-
-        // Calculate and display timer
-        const endTime = performance.now();
-        const loadTime = Math.round(endTime - startTime);
-        const timerElement = document.getElementById("timer");
-        timerElement.textContent = `Variation loaded in ${loadTime}ms`;
-        timerElement.classList.remove("hidden");
+          // Attempt to delete for subdomains
+          const domainParts = domain.split('.');
+          for (let j = domainParts.length - 1; j > 0; j--) {
+            let currentDomain = '.' + domainParts.slice(j).join('.');
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;domain=" + currentDomain + ";path=" + path;
+          }
+        }
       }
-      init();
 
       // Clear site data function
       function clearSiteData() {
@@ -191,9 +170,7 @@
         // Clear sessionStorage
         sessionStorage.clear();
         // Clear cookies
-        document.cookie.split(";").forEach(function (c) {
-          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-        });
+        deleteAllCookies();
         // Refresh page
         window.location.reload();
       }
