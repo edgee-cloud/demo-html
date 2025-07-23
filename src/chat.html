@@ -20,6 +20,8 @@ header { color:#eee; padding:12px; font-size:30px; height:45px; font-family:"Ope
 #right textarea { background:#eee; box-sizing: border-box; }
 #controls { text-align:right; padding:5px 6px; border: 1px solid #fff; }
 #controls button { height: 28px; vertical-align: middle; }
+#message { float: left; }
+#mail, #title { padding:12px; max-width:960px; }
 .prompt { color:#322; background:#ccc; padding:6px; }
 
 .markdown code { background:#f0f0f0; color:navy; border-radius:6px; padding:2px; } 
@@ -56,38 +58,18 @@ header { color:#eee; padding:12px; font-size:30px; height:45px; font-family:"Ope
   <div id="right">
     <textarea id="prompt" rows="10" placeholder="Please input prompt here..."></textarea>
     <div id="controls">
+        <span id="message"><!-- will be filled with status messages --></span>
         <button onclick="chat.recognition()" title="voice input">🎤</button>
         <button id="btnSend" accesskey="s" onclick="chat.submit()">Send</button>
     </div>
-     <!--
-     <div id="list" style="height:calc(100vh - 163px)">
-        <b>Samples of prompt</b>
-        <ul>
-          <li>A quote of today</li>
-          <li>A table for 10 famous artists include name, DOB and style</li>
-          <li>Create an article outline in markdown format for "teamwork"</li>
-          <li>Create a dialogue discussing "the meaning of love"</li>
-          <li>Introduce "vanilla chatGPT"</li>
-          <li>Write a short story about "vanilla chatGPT"</li>
-          <li>Discuss about the pros and cons of "vanilla js"</li>
-          <li>Summarize the following content ...</li>
-        </ul>
-     </div>
-     -->
   </div>
   <div id="left">
-    <div id="main" style="padding:12px; max-width:960px">
-       <h3>
+    <h3 id="title">
         Conversation history 
         <button onclick="chat.export()" title="export conversation">Export</button>
-       </h3>
-       
-       <!--
-       <p class="desktop">Please submit prompt by pressing 
-        <label><input type="radio" name="submitkey" onclick="chat.hotkey='enter'" checked>[Enter]</label>
-        <label><input type="radio" name="submitkey" onclick="chat.hotkey='ctrl'">[Ctrl-Enter]</label>
-       </p>
-       -->
+    </h3>
+    <div id="main">
+    <!-- conversation history will be displayed here -->
     </div>
   </div>
 </div>
@@ -247,25 +229,39 @@ chat.history = []
 chat.stream = function (prompt) {
 
   //chat.body.stream = true 
-  chat.body.messages = [ { role: "user", content: prompt} ]
-  chat.headers = { "Content-Type": "application/json" }
-  chat.result = ''
+  chat.body.messages = [ { role: "user", content: prompt} ];
+  chat.result = '';
   chat.controller = new AbortController();
-  const signal = chat.controller.signal
+  const signal = chat.controller.signal;
    
-  for (let i=chat.history.length-1; i>=0&&i>(chat.history.length-3); i--) {
+  // if there is history, add the last 5 messages to the chat body
+  for (let i=chat.history.length-1; i>=0 && i > (chat.history.length - 5); i--) {
     chat.body.messages.unshift( { role:'assistant', content: chat.history[i].result } );
     chat.body.messages.unshift( { role:'user', content: chat.history[i].prompt } );
   }
   
-  fetch( chat.endPoint, { method:'POST', headers: chat.headers, body: JSON.stringify(chat.body), signal } )
-  .then( response => { 
+  fetch( chat.endPoint, {
+    method:'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(chat.body),
+    signal
+  }).then( response => { 
   
     if (!response.ok) {
         if (response.status == 401) throw new Error('401 Unauthorized, invalide API Key');
         throw new Error('failed to get data, error status '+response.status)
     }
+
+    // this is for non-streaming response
+    const jsonBody = response.json();
+    // const jsonBody = JSON.parse('{"role":"assistant","content":"Ok"}'); // fake response for testing
+    chat.result = (jsonBody.content || '');
+    chat.oncomplete(chat.result);
+    chat("message").innerHTML = 'Done.';
+
     
+    /*
+    // this is for streaming response (not supported yet)
     const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
     
     reader.read().then( function processText({ done, value }) {
@@ -289,6 +285,7 @@ chat.stream = function (prompt) {
       return reader.read().then(processText);
        
     } )
+      */
     
   } ).catch( error => chat.onerror(error) );
   
@@ -300,7 +297,7 @@ chat.onerror = (error) => { alert(error);  };
 // export conversation
 chat.export = (fname) => {
   if (!chat.history || chat.history.length === 0) {
-    alert('No conversation to export!');
+    chat("message").innerHTML = 'No conversation to export!'
     return;
 }
   const link = document.createElement('a');
@@ -315,36 +312,26 @@ chat.export = (fname) => {
 //================= main program ===================
 // display result when receiving message
 chat.onmessage = function (text) {
-  chat("message").innerHTML = 'receiving messages..'
+  chat("message").innerHTML = 'receiving messages..';
   chat("receiving").innerHTML = md.html(text + '<br><br>');
 }
 
 // show whole conversation when message completed
 chat.oncomplete = (text) => {
-  let html1='', html2=''
-  chat("message").innerHTML = `(model: ${chat.model})`
+  let html='';
+  // chat("message").innerHTML = `(model: ${chat.model})`
   chat.history.push( { prompt: chat.prompt, result: chat.result } )
   
-  for (let i=0; i<chat.history.length; i++) {
-     html1 += '<h4 class=prompt id=prompt'+i+' ondblclick="chat.clipboard('+i+')" title="doubleclick to copy">' 
-     html1 += chat.history[i].prompt + '</h4>\n' + chat.history[i].result + '\n\n'
-     html2 += '<li onclick="location=this.title" title="#prompt' + i + '">' + chat.history[i].prompt
+  for (let i=0; i < chat.history.length; i++) {
+     html += '<h4 class="prompt" id="prompt'+i+'">'; 
+     html += chat.history[i].prompt + '</h4>\n' + chat.history[i].result + '\n\n';
   }
   
-  html1 += '<div><button style="float:left" onclick="chat.redo()">Redo</button>'
-  html1 += '<button style="float:right" onclick="chat.speak()">🔊 speak</button>'
-  
-  chat("main").innerHTML = md.html(html1) + '<br></div>'
-  chat("list").innerHTML = html2
+  chat("main").innerHTML = md.html(html) + '<br></div>'
   chat("left").scrollTop = chat("left").scrollHeight;
-  chat("btnSend").innerHTML = '<b>S</b>end'
+  chat("btnSend").innerHTML = 'Send'
   
-  if (document.body.clientWidth > 800) {
-    chat('prompt').select()
-    chat('prompt').focus();
-  } else {
-    chat('prompt').value = ''
-  }  
+  chat('prompt').value = '';  
 }
 
 // abort fetch request.
@@ -360,35 +347,21 @@ chat.submit = () => {
     chat.abort()
     chat("btnSend").innerText = 'Send'
   } else {
-    chat.stream( chat.prompt = chat('prompt').value )
-    chat("main").innerHTML += '<h4 class=prompt>' + chat.prompt + '</h4>\n<div id=receiving>Receiving....</div>'
+    chat.prompt = chat('prompt').value.trim();
+    if (chat.prompt === '') {
+      chat("message").innerHTML = 'Please input prompt!'
+      return;
+    }
+    chat.stream(chat.prompt);
+    chat("message").innerHTML = 'Receiving messages...';
+    //chat("main").innerHTML += '<h4 class="prompt">' + chat.prompt + '</h4>\n<div id="receiving">Receiving....</div>'
     chat("left").scrollTop = chat("left").scrollHeight;
     chat("btnSend").innerText = 'Stop..'
   }  
 }
 
-/*
-// show default prompt list
-chat.showPrompts = () => {
-  chat('list').innerHTML = chat.prompts
-  document.querySelectorAll('#list li').forEach( (element) => {
-    element.addEventListener('click', (event) => {
-      chat('prompt').value = element.innerText
-      chat('prompt').focus();
-    });
-  })
-};
-*/
-
-chat.clipboard = (i) => {
-  navigator.clipboard.writeText( '### '+ chat.history[i].prompt + '\n\n' + chat.history[i].result )
-  chat("message").innerText = 'dialogue has been copied to clipboard'
-}
-
 // prompt for API key if not found in localStorage
 window.onload = () => {
-  // chat.prompts = chat('list').innerHTML
-  // chat.showPrompts()
   chat('prompt').focus();
 }
 
@@ -400,25 +373,6 @@ document.addEventListener('keydown', function(event) {
     }
   }  
 });
-
-// [20230412] redo. submit latest prompt
-chat.redo = () => {
-  chat.history.pop()
-  chat('prompt').value = chat.prompt
-  chat.submit()
-}
-
-// speak the latest answer
-chat.speak = (i)  => {
-  if (window.speechSynthesis.speaking) {
-     window.speechSynthesis.cancel();
-  } else {
-    i = ( i>=0? i : chat.history.length-1 )
-    const utterance = new SpeechSynthesisUtterance(chat.history[i].result);
-    utterance.rate = 1.5;
-    window.speechSynthesis.speak(utterance);
-  }
-}
 
 // voice recognition
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
