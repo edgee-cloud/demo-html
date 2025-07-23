@@ -24,15 +24,15 @@ header { color:#eee; padding:12px; font-size:30px; height:45px; font-family:"Ope
 #mail, #title { padding:12px; max-width:960px; }
 .prompt { color:#322; background:#ccc; padding:6px; }
 
-.markdown code { background:#f0f0f0; color:navy; border-radius:6px; padding:2px; } 
-.markdown pre  { background:#f0f0f0; margin:16px; border:1px solid #ddd; padding:8px; border-radius: 6px;  } 
-.markdown pre:hover button { display:block; }
-.markdown pre button { display:none; float:right; margin:4px }
-.markdown blockquote { background:#f0f0f0; border-left:6px solid grey; padding:8px }
-.markdown table { margin:12px; border-collapse: collapse; }
-.markdown th    { border:1px solid grey; background:lightgrey; padding:6px; } 
-.markdown td    { border:1px solid grey;  padding:6px; }
-.markdown tr:nth-child(even) {  background:#f0f0f0;  }
+#main code { background:#f0f0f0; color:navy; border-radius:6px; padding:2px; }
+#main pre  { background:#f0f0f0; margin:16px; border:1px solid #ddd; padding:8px; border-radius: 6px;  }
+#main pre:hover button { display:block; }
+#main pre button { display:none; float:right; margin:4px; }
+#main blockquote { background:#f0f0f0; border-left:6px solid grey; padding:8px; }
+#main table { margin:12px; border-collapse: collapse; }
+#main th    { border:1px solid grey; background:lightgrey; padding:6px; }
+#main td    { border:1px solid grey;  padding:6px; }
+#main tr:nth-child(even) {  background:#f0f0f0;  }
 
 @media print{
   #menu, #right { display:none!important }
@@ -74,8 +74,11 @@ header { color:#eee; padding:12px; font-size:30px; height:45px; font-family:"Ope
   </div>
 </div>
 
+<script type="text/javascript" src="/js/showdown.min.js"></script>
+
 <script type="text/javascript">
 
+const md = new showdown.Converter();
 const chat = (id) => window.document.getElementById(id);
 
 // Set the API endpoint URL
@@ -161,7 +164,7 @@ chat.export = (fname) => {
   const link = document.createElement('a');
   link.href = 'data:text/plain;charset=utf-8,' 
   chat.history.forEach( (x) => { 
-    link.href += encodeURIComponent('### '+x.prompt+'\n\n'+x.result+'\n\n') 
+    link.href += encodeURIComponent('### '+x.prompt+'\n\n'+x.result+'\n\n')
   } );  
   link.download = fname||('chat-'+new Date().toISOString().substr(0,16))+'.md';
   link.click();
@@ -177,7 +180,7 @@ chat.oncomplete = (text) => {
   
   for (let i=0; i < chat.history.length; i++) {
      html += '<h4 class="prompt" id="prompt'+i+'">'; 
-     html += chat.history[i].prompt + '</h4><div class="result">' + chat.history[i].result + '</div>';
+     html += chat.history[i].prompt + '</h4><div class="result">' + md.makeHtml(chat.history[i].result) + '</div>';
   }
   
   chat("main").innerHTML = html;
@@ -207,7 +210,6 @@ chat.submit = () => {
     }
     chat.stream(chat.prompt);
     chat("message").innerHTML = 'Receiving messages...';
-    //chat("main").innerHTML += '<h4 class="prompt">' + chat.prompt + '</h4>\n<div id="receiving">Receiving....</div>'
     chat("left").scrollTop = chat("left").scrollHeight;
     chat("btnSend").innerText = 'Stop..'
   }  
