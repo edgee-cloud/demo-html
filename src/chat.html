@@ -253,12 +253,11 @@ chat.stream = function (prompt) {
     }
 
     // this is for non-streaming response
-    const jsonBody = response.json();
-    // const jsonBody = JSON.parse('{"role":"assistant","content":"Ok"}'); // fake response for testing
-    chat.result = (jsonBody.content || '');
-    chat.oncomplete(chat.result);
-    chat("message").innerHTML = 'Done.';
-
+    response.json().then( jsonBody => {
+        chat.result = (jsonBody.content || '');
+        chat.oncomplete(chat.result);
+        chat("message").innerHTML = 'Done.';
+    }).catch( error => chat.onerror(error) );
     
     /*
     // this is for streaming response (not supported yet)
